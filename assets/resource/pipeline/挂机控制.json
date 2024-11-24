@@ -153,6 +153,9 @@
             "起手选牌界面",
             "结算界面"
         ],
+        "focus": true,
+        "focus_tip": "开始新的一局",
+        "focus_tip_color": "Blue",
         "on_error": "stopapp"
     },
     "起手选牌界面": {
@@ -335,7 +338,7 @@
         ],
         "end": true,
         "end_offset": [
-            -30,
+            30,
             30,
             1,
             1
