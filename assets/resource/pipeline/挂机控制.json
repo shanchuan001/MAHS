@@ -1,0 +1,424 @@
+{
+    "进入传统对战": {
+        "recognition": "OCR",
+        "expected": "对战",
+        "roi": [
+            511,
+            178,
+            248,
+            85
+        ],
+        "action": "Click",
+        "timeout": 15000,
+        "next": [
+            "等待进入选卡组界面"
+        ],
+        "on_error": "stopapp"
+    },
+    "等待进入选卡组界面": {
+        "recognition": "OCR",
+        "expected": "收藏",
+        "roi": [
+            436,
+            598,
+            406,
+            121
+        ],
+        "timeout": 5000,
+        "next": [
+            "等待进入选卡组界面_选择模式"
+        ],
+        "interrupt": "切换模式",
+        "on_error": "stopapp"
+    },
+    "切换模式": {
+        "recognition": "OCR",
+        "expected": "对战",
+        "roi": [
+            531,
+            0,
+            211,
+            57
+        ],
+        "action": "Click",
+        "target": [
+            1196,
+            31,
+            42,
+            42
+        ],
+        "timeout": 5000,
+        "next": "切换模式2",
+        "on_error": "stopapp"
+    },
+    "切换模式2": {
+        "recognition": "OCR",
+        "expected": "标准",
+        "roi": [
+            85,
+            310,
+            1114,
+            236
+        ],
+        "action": "Click",
+        "target_offset": [
+            0,
+            -200,
+            1,
+            1
+        ],
+        "timeout": 5000,
+        "next": [
+            "等待进入选卡组界面_选择模式"
+        ],
+        "interrupt": "切换模式",
+        "on_error": "stopapp"
+    },
+    "等待进入选卡组界面_选择模式": {
+        "recognition": "OCR",
+        "expected": "标准",
+        "roi": [
+            531,
+            0,
+            211,
+            57
+        ],
+        "timeout": 5000,
+        "next": [
+            "切换到第一页",
+            "选择卡组"
+        ],
+        "on_error": "stopapp"
+    },
+    "切换到第一页": {
+        "recognition": "TemplateMatch",
+        "template": "左按钮.png",
+        "roi": [
+            0,
+            212,
+            193,
+            287
+        ],
+        "action": "Click",
+        "target": [
+            47,
+            332,
+            39,
+            40
+        ],
+        "timeout": 5000,
+        "next": [
+            "切换到第一页",
+            "选择卡组"
+        ],
+        "on_error": "stopapp"
+    },
+    "选择卡组": {
+        "recognition": "OCR",
+        "expected": "11",
+        "roi": [
+            131,
+            140,
+            1020,
+            436
+        ],
+        "action": "Click",
+        "timeout": 5000,
+        "next": "开始",
+        "on_error": "stopapp"
+    },
+    "开始": {
+        "recognition": "OCR",
+        "expected": "开始",
+        "roi": [
+            892,
+            483,
+            254,
+            236
+        ],
+        "action": "Click",
+        "timeout": 5000,
+        "next": [
+            "等待匹配",
+            "开始"
+        ],
+        "on_error": "stopapp"
+    },
+    "等待匹配": {
+        "recognition": "OCR",
+        "expected": "搜寻",
+        "timeout": 180000,
+        "rate_limit": 2000,
+        "next": [
+            "起手选牌界面",
+            "结算界面"
+        ],
+        "on_error": "stopapp"
+    },
+    "起手选牌界面": {
+        "recognition": "OCR",
+        "expected": "确",
+        "roi": [
+            543,
+            602,
+            191,
+            100
+        ],
+        "action": "Click",
+        "timeout": 180000,
+        "rate_limit": 800,
+        "next": [
+            "等待我方回合",
+            "结算界面"
+        ],
+        "on_error": "stopapp"
+    },
+    "等待我方回合": {
+        "recognition": "OCR",
+        "expected": "结束回合",
+        "roi": [
+            1079,
+            303,
+            155,
+            100
+        ],
+        "rate_limit": 500,
+        "timeout": 5000,
+        "next": [
+            "检测是否有可出牌",
+            "结算界面",
+            "进行下一回合",
+            "检测是否需发现"
+        ],
+        "on_error": "stopapp"
+    },
+    "检测是否有可出牌": {
+        "recognition": "ColorMatch",
+        "lower": [
+            101,
+            255,
+            66
+        ],
+        "upper": [
+            117,
+            255,
+            76
+        ],
+        "roi": [
+            863,
+            589,
+            340,
+            60
+        ],
+        "connected": true,
+        "count": 5,
+        "action": "Swipe",
+        "begin": true,
+        "begin_offset": [
+            0,
+            20,
+            1,
+            1
+        ],
+        "end": [
+            1028,
+            94,
+            241,
+            373
+        ],
+        "post_delay": 1200,
+        "timeout": 5000,
+        "next": [
+            "检测是否有可出牌",
+            "检测是否有可进攻随从",
+            "检测是否需抉择",
+            "结算界面",
+            "进行下一回合",
+            "等待我方回合"
+        ],
+        "on_error": "stopapp"
+    },
+    "检测是否需发现": {
+        "recognition": "OCR",
+        "expected": "隐藏",
+        "roi": [
+            69,
+            615,
+            210,
+            94
+        ],
+        "action": "Click",
+        "target": [
+            488,
+            282,
+            108,
+            231
+        ],
+        "next": [
+            "检测是否有可出牌",
+            "检测是否有可进攻随从",
+            "检测是否需抉择",
+            "结算界面",
+            "进行下一回合",
+            "等待我方回合"
+        ],
+        "post_delay": 1800,
+        "timeout": 5000,
+        "on_error": "stopapp"
+    },
+    "检测是否需抉择": {
+        "recognition": "TemplateMatch",
+        "template": "抉择或发现.png",
+        "roi": [
+            309,
+            77,
+            934,
+            25
+        ],
+        "action": "Click",
+        "target_offset": [
+            0,
+            40,
+            0,
+            0
+        ],
+        "next": [
+            "检测是否有可出牌",
+            "检测是否有可进攻随从",
+            "检测是否需抉择",
+            "结算界面",
+            "进行下一回合",
+            "等待我方回合"
+        ],
+        "post_delay": 1800,
+        "timeout": 5000,
+        "on_error": "stopapp"
+    },
+    "检测是否有可进攻随从": {
+        "recognition": "TemplateMatch",
+        "template": "可进攻随从.png",
+        "threshold": 0.6,
+        "roi": [
+            166,
+            337,
+            907,
+            47
+        ],
+        "timeout": 5000,
+        "next": [
+            "选择敌方嘲讽随从",
+            "选择敌方特殊随从",
+            "脸"
+        ],
+        "on_error": "stopapp"
+    },
+    "选择敌方嘲讽随从": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "嘲讽随从.png",
+            "嘲讽随从_金.png"
+        ],
+        "roi": [
+            204,
+            148,
+            866,
+            229
+        ],
+        "threshold": 0.6,
+        "action": "Swipe",
+        "begin": "检测是否有可进攻随从",
+        "begin_offset": [
+            0,
+            20,
+            1,
+            1
+        ],
+        "end": true,
+        "end_offset": [
+            -30,
+            30,
+            1,
+            1
+        ],
+        "post_delay": 600,
+        "timeout": 5000,
+        "next": [
+            "检测是否有可出牌",
+            "检测是否有可进攻随从",
+            "结算界面",
+            "进行下一回合",
+            "等待我方回合"
+        ],
+        "on_error": "stopapp"
+    },
+    "选择敌方特殊随从": {
+        "recognition": "TemplateMatch",
+        "template": [
+            "特殊效果随从.png"
+        ],
+        "roi": [
+            198,
+            293,
+            873,
+            102
+        ],
+        "threshold": 0.6,
+        "post_delay": 600,
+        "action": "Swipe",
+        "begin": "检测是否有可进攻随从",
+        "begin_offset": [
+            0,
+            20,
+            1,
+            1
+        ],
+        "end": true,
+        "end_offset": [
+            0,
+            -20,
+            1,
+            1
+        ],
+        "timeout": 5000,
+        "next": [
+            "检测是否有可出牌",
+            "检测是否有可进攻随从",
+            "结算界面",
+            "进行下一回合",
+            "等待我方回合"
+        ],
+        "on_error": "stopapp"
+    },
+    "脸": {
+        "action": "Swipe",
+        "target": [
+            601,
+            65,
+            68,
+            82
+        ],
+        "begin": "检测是否有可进攻随从",
+        "begin_offset": [
+            0,
+            20,
+            1,
+            1
+        ],
+        "end": [
+            601,
+            65,
+            68,
+            82
+        ],
+        "post_delay": 600,
+        "timeout": 5000,
+        "next": [
+            "检测是否有可出牌",
+            "检测是否有可进攻随从",
+            "结算界面",
+            "进行下一回合",
+            "等待我方回合"
+        ],
+        "on_error": "stopapp"
+    }
+}

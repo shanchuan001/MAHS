@@ -1,0 +1,116 @@
+{
+    "startapp": {
+        "action": "StartApp",
+        "package": "com.blizzard.wtcg.hearthstone/com.blizzard.wtcg.hearthstone.HearthstoneActivity",
+        "next": [
+            "等待开门",
+            "等待排队"
+        ],
+        "timeout": 80000,
+        "on_error": "stopapp"
+    },
+    "stopapp": {
+        "action": "StopApp",
+        "package": "com.blizzard.wtcg.hearthstone",
+        "next": "startapp",
+        "focus": true,
+        "focus_tip": "出现这个说明识别错误重启了,如果一直重启且没有其他动作请联系作者",
+        "focus_tip_color": "Red"
+    },
+    "等待排队": {
+        "recognition": "OCR",
+        "expected": "人",
+        "next": "等待开门",
+        "timeout": 950000,
+        "on_error": "startapp"
+    },
+    "等待开门": {
+        "recognition": "OCR",
+        "expected": "点击",
+        "action": "Click",
+        "next": [
+            "重连到上一场对战",
+            "进入传统对战",
+            "等待开门"
+        ],
+        "interrupt": [
+            "点确定",
+            "点一下空白区域"
+        ],
+        "timeout": 30000,
+        "on_error": "startapp"
+    },
+    "重连到上一场对战": {
+        "recognition": "OCR",
+        "expected": "重新连接",
+        "next": [
+            "检测是否有可出牌",
+            "检测是否有可进攻随从",
+            "检测是否需抉择",
+            "检测是否需发现",
+            "结算界面",
+            "进行下一回合",
+            "等待我方回合"
+        ],
+        "timeout": 30000,
+        "on_error": "startapp"
+    },
+    "结算界面": {
+        "recognition": "OCR",
+        "expected": [
+            "败北",
+            "胜利",
+            "点击",
+            "确定"
+        ],
+        "roi": [
+            322,
+            400,
+            637,
+            319
+        ],
+        "action": "Click",
+        "timeout": 5000,
+        "next": [
+            "结算界面",
+            "开始",
+            "选择卡组",
+            "等待进入选卡组界面"
+        ],
+        "interrupt": "点一下空白区域",
+        "on_error": "stopapp"
+    },
+    "点确定": {
+        "recognition": "OCR",
+        "expected": "确定",
+        "action": "Click"
+    },
+    "点一下空白区域": {
+        "action": "Click",
+        "target": [
+            169,
+            88,
+            202,
+            183
+        ],
+        "post_delay": 500
+    },
+    "进行下一回合": {
+        "recognition": "OCR",
+        "expected": "结束回合",
+        "roi": [
+            1079,
+            303,
+            155,
+            100
+        ],
+        "action": "Click",
+        "post_delay": 500,
+        "timeout": 180000,
+        "next": [
+            "等待我方回合",
+            "结算界面"
+        ],
+        "on_error": "stopapp"
+    }
+}
