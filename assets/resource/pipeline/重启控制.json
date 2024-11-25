@@ -57,20 +57,22 @@
         "on_error": "startapp"
     },
     "结算界面": {
-        "recognition": "OCR",
-        "expected": [
-            "败北",
-            "胜利",
-            "点击",
-            "确定"
+        "recognition": "TemplateMatch",
+        "template": [
+            "败北.png",
+            "胜利.png",
+            "空星.png",
+            "实星.png"
         ],
         "roi": [
-            322,
-            400,
-            637,
-            319
+            438,
+            49,
+            443,
+            600
         ],
+        "green_mask": true,
         "action": "Click",
+        "post_delay": 500,
         "timeout": 5000,
         "next": [
             "结算界面",
@@ -78,7 +80,10 @@
             "选择卡组",
             "等待进入选卡组界面"
         ],
-        "interrupt": "点一下空白区域",
+        "interrupt": [
+            "点一下空白区域",
+            "点确定"
+        ],
         "on_error": "stopapp"
     },
     "点确定": {
@@ -106,7 +111,7 @@
             100
         ],
         "action": "Click",
-        "post_delay": 500,
+        "post_delay": 1500,
         "timeout": 180000,
         "next": [
             "等待我方回合",

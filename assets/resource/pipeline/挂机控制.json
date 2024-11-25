@@ -124,7 +124,11 @@
         ],
         "action": "Click",
         "timeout": 5000,
-        "next": "开始",
+        "post_delay": 800,
+        "next": [
+            "开始",
+            "选择卡组"
+        ],
         "on_error": "stopapp"
     },
     "开始": {
@@ -140,7 +144,8 @@
         "timeout": 5000,
         "next": [
             "等待匹配",
-            "开始"
+            "开始",
+            "选择卡组"
         ],
         "on_error": "stopapp"
     },
@@ -219,10 +224,11 @@
         "connected": true,
         "count": 20,
         "action": "Swipe",
+        "order_by": "Random",
         "begin": true,
         "begin_offset": [
             0,
-            40,
+            4,
             1,
             1
         ],
@@ -233,7 +239,7 @@
             373
         ],
         "post_delay": 1200,
-        "timeout": 5000,
+        "timeout": 15000,
         "next": [
             "检测是否有可出牌_金边",
             "检测是否有可出牌",
@@ -266,10 +272,11 @@
         "connected": true,
         "count": 5,
         "action": "Swipe",
+        "order_by": "Random",
         "begin": true,
         "begin_offset": [
             0,
-            40,
+            4,
             1,
             1
         ],
@@ -279,8 +286,8 @@
             241,
             373
         ],
-        "post_delay": 1200,
-        "timeout": 5000,
+        "post_delay": 1500,
+        "timeout": 15000,
         "next": [
             "检测是否有可出牌_金边",
             "检测是否有可出牌",
@@ -471,7 +478,7 @@
             82
         ],
         "post_delay": 600,
-        "timeout": 5000,
+        "timeout": 15000,
         "next": [
             "检测是否有可出牌_金边",
             "检测是否有可出牌",
