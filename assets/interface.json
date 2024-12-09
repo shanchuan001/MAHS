@@ -15,12 +15,17 @@
     ],
     "task": [
         {
-            "name": "传统对战挂机",
-            "entry": "进入传统对战",
+            "name": "传统对战",
+            "entry": "开始传统对战",
             "option": [
                 "对战模式"
             ],
-            "doc": "请在主页开始此任务,否则会重启游戏\n\n[color:red][u]不支持一切需要瞄准的卡牌和武器牌[/u][/color]\n\n[color:blue]请将卡组名称命名为[u]111[/u]并放在第一面[/color]"
+            "pipeline_override": {
+                "主页检测": {
+                    "next": "进入传统对战"
+                }
+            },
+            "doc": "[color:red][u]不支持地标/武器牌/一切需要瞄准的卡牌[/u][/color]\n\n[color:blue]请将卡组名称命名为[u]AAA[/u]并放在第一面[/color]"
         }
     ],
     "option": {
@@ -49,6 +54,17 @@
                         },
                         "等待进入选卡组界面_选择模式": {
                             "expected": "休闲"
+                        }
+                    }
+                },
+                {
+                    "name": "幻变模式",
+                    "pipeline_override": {
+                        "切换模式2": {
+                            "expected": "幻变"
+                        },
+                        "等待进入选卡组界面_选择模式": {
+                            "expected": "幻变"
                         }
                     }
                 }

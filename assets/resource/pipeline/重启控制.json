@@ -17,16 +17,40 @@
         "focus_tip": "出现这个说明识别错误重启了,如果一直重启且没有其他动作请联系作者",
         "focus_tip_color": "Red"
     },
+    "主页检测": {
+        "recognition": "OCR",
+        "expected": "对战",
+        "roi": [
+            511,
+            178,
+            248,
+            85
+        ],
+        "timeout": 4000,
+        "on_error": "stopapp"
+    },
+    "返回主页检测": {
+        "recognition": "TemplateMatch",
+        "template": "返回按钮.png",
+        "action": "Click",
+        "post_delay": 800
+    },
     "等待排队": {
         "recognition": "OCR",
         "expected": "人",
         "next": "等待开门",
         "timeout": 950000,
-        "on_error": "startapp"
+        "on_error": "stopapp"
     },
     "等待开门": {
         "recognition": "OCR",
         "expected": "点击",
+        "roi": [
+            493,
+            519,
+            282,
+            109
+        ],
         "action": "Click",
         "next": [
             "重连到上一场对战",
@@ -38,7 +62,7 @@
             "点一下空白区域"
         ],
         "timeout": 30000,
-        "on_error": "startapp"
+        "on_error": "stopapp"
     },
     "重连到上一场对战": {
         "recognition": "OCR",
@@ -53,8 +77,8 @@
             "进行下一回合",
             "等待我方回合"
         ],
-        "timeout": 30000,
-        "on_error": "startapp"
+        "timeout": 120000,
+        "on_error": "stopapp"
     },
     "结算界面": {
         "recognition": "TemplateMatch",
@@ -87,8 +111,8 @@
         "on_error": "stopapp"
     },
     "点确定": {
-        "recognition": "OCR",
-        "expected": "确定",
+        "recognition": "TemplateMatch",
+        "template": "确定.png",
         "action": "Click"
     },
     "点一下空白区域": {

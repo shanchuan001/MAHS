@@ -1,4 +1,14 @@
 {
+    "开始传统对战": {
+        "next": [
+            "主页检测"
+        ],
+        "interrupt": [
+            "返回主页检测"
+        ],
+        "timeout": 3000,
+        "on_error": "stopapp"
+    },
     "进入传统对战": {
         "recognition": "OCR",
         "expected": "对战",
@@ -115,7 +125,7 @@
     },
     "选择卡组": {
         "recognition": "OCR",
-        "expected": "11",
+        "expected": "AA",
         "roi": [
             131,
             140,
@@ -216,19 +226,19 @@
             5
         ],
         "roi": [
-            863,
-            589,
-            340,
-            60
+            860,
+            584,
+            377,
+            70
         ],
         "connected": true,
-        "count": 20,
+        "count": 10,
         "action": "Swipe",
         "order_by": "Random",
         "begin": true,
         "begin_offset": [
             0,
-            4,
+            2,
             1,
             1
         ],
@@ -264,10 +274,10 @@
             76
         ],
         "roi": [
-            863,
-            589,
-            340,
-            60
+            860,
+            584,
+            377,
+            70
         ],
         "connected": true,
         "count": 5,
@@ -276,7 +286,7 @@
         "begin": true,
         "begin_offset": [
             0,
-            4,
+            2,
             1,
             1
         ],
