@@ -18,6 +18,7 @@
             248,
             85
         ],
+        "pre_delay": 600,
         "action": "Click",
         "timeout": 15000,
         "next": [
